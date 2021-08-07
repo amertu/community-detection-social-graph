@@ -25,6 +25,7 @@ Here are some output based on small dataset. For more information, you can have 
 </tr>
 </table>
 
+For channel categories with 100- 500 nodes, the following table shows comparative scores by using the above mentioned six algorithms:
 <img src="fig/results_100-500.png" alt="Binary "> 
 
 ## Final Report Overleaf
