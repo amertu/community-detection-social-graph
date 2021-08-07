@@ -1,5 +1,11 @@
 # SNA
-Empirical Analysis of Social Network Data with a focus on comparing different community detection algorithms
+Empirical Analysis of Social Network Data with a focus on comparing six community detection algorithms:
+* Fastgreedy
+* Label Propagation
+* Label Propagation
+* Infomap
+* Multilevel
+* Walktrap
 
 <table>
 <tr> <td>
