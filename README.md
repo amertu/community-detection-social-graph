@@ -12,7 +12,7 @@ Here are some output based on small dataset. For more information, you can have 
 
 <table>
 <tr> <td>
-<img src="Community-Detection_smal_dataset_files/figure-gfm/unnamed-chunk-10-1.png" alt=“Binary”>
+<img src="doc/Community-Detection_smal_dataset_files/figure-gfm/unnamed-chunk-10-1.png" alt=“Binary”>
 </td>
 <td> <img src="Community-Detection_smal_dataset_files/figure-gfm/unnamed-chunk-10-2.png" alt="Binary "> </td>
  <td> <img src="Community-Detection_smal_dataset_files/figure-gfm/unnamed-chunk-10-3.png" alt="Binary "> </td>
