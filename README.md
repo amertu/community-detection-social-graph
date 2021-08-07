@@ -8,7 +8,8 @@ Empirical Analysis of Social Network Data with a focus on comparing six communit
 * Walktrap
 
 ## Results
-Here are some output based on small dataset. For more information, you can have a look at the [report](https://www.overleaf.com/read/fgqqbqstwypq) and [R Markdown document](doc/Community-Detection_smal_dataset.md).
+* Here are some output plots based on small dataset, that show detected communities using the menttioned algorithms. For more information, you can have a look at the [report](https://www.overleaf.com/read/fgqqbqstwypq) and [R Markdown document](doc/Community-Detection_smal_dataset.md).
+
 
 <table>
 <tr> <td>
@@ -25,7 +26,9 @@ Here are some output based on small dataset. For more information, you can have 
 </tr>
 </table>
 
-For channel categories with 100- 500 nodes, the following table shows comparative scores by using the above mentioned six algorithms:
+* For channel categories with 100- 500 nodes, the following table shows comparative scores by using the above mentioned six algorithms:
+
+
 <img src="fig/results_100-500.png" alt="Binary "> 
 
 ## Final Report Overleaf
