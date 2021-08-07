@@ -25,6 +25,8 @@ Here are some output based on small dataset. For more information, you can have 
 </tr>
 </table>
 
+<img src="fig/results_100-500.png" alt="Binary "> 
+
 ## Final Report Overleaf
 
 https://www.overleaf.com/read/fgqqbqstwypq
