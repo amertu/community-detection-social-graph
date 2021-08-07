@@ -2,9 +2,7 @@
 title: "Social Network Analysis - 2019W"
 author: "Group 18"
 date: "14/01/2020"
-output:
-  word_document: default
-  pdf_document: default
+output: github_document
 subtitle: Community Detection 2
 ---
 
@@ -278,7 +276,7 @@ colnames(graph) <- c("voter", "author", "weight")
 g <- graph.data.frame(graph)
 
 
-categories <- unique(joined_votes_postings$ArticleChannel, nmax = 3)
+categories <- unique(joined_votes_postings$ArticleChannel)
 #categories
 
 c <- categories[8]
@@ -377,7 +375,7 @@ compare_alles_con_alles <- function (clusters_list, comp_cluster) {
 
 set.seed(9103)
 
-setwd("./plots3")
+setwd("./output/plots_large_dataset")
 
 i = 1
 
@@ -858,7 +856,7 @@ for (c in categories){
   rownames(c_metrics) <- r_clusters
   c_metrics <- as.table(c_metrics)
   
-  setwd("./target3")
+  setwd("./output/target_large_dataset")
   
   write.csv(c_metrics, file=paste('clustering',"_ALL_metrics_3",'.csv', sep =''))
   colnames(c_metrics)

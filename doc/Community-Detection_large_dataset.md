@@ -1,25 +1,13 @@
----
-title: "Social Network Analysis - 2019W"
-author: "Group 18"
-date: "29/02/2020"
+Social Network Analysis - 2019W
+================
+Group 18
+14/01/2020
 
-output:
-  github_document
-  
-subtitle: Community Detection 2
----
-
-```{r setup, include=FALSE}
-knitr::is_latex_output()
-knitr::opts_chunk$set(echo = TRUE)
-
-```
 # Task 1
 
 ## Setting up enviroment, read data.
 
-```{r, echo=TRUE,warning=FALSE,message=FALSE}
-
+``` r
 #igraph library check and load
 if("igraph" %in% rownames(installed.packages()) == FALSE) {
   install.packages("igraph")
@@ -31,13 +19,11 @@ if("dplyr" %in% rownames(installed.packages()) == FALSE) {
   install.packages("dplyr")
 }
 library(dplyr)
-
 ```
 
 ## Function for reading posting dataset and selection of colums
 
-```{r, echo=TRUE,warning=FALSE,message=FALSE}
-
+``` r
 # --------------- read_in_postings_csv Function ----------------------
 
 read_in_postings_csv <- function (filename) {
@@ -63,15 +49,12 @@ read_in_postings_csv <- function (filename) {
   return(postings)
 }
 # ------------------------ end Function--------------------------------
-
 ```
-
 
 ## Actually reading postings files
 
-```{r, echo=TRUE,warning=FALSE,message=TRUE}
-
-all_data = FALSE
+``` r
+all_data = TRUE
 
 if (!all_data){
   
@@ -79,7 +62,7 @@ if (!all_data){
   setwd("./data/Data files 01.05.2019-02.05.2019 (40,8 MB)-20191126")
   
   print("Not alles data..")
-  all_postings_original <-read_in_postings_csv("Postings_01052019_02052019.csv")
+  all_postings_original <- read_in_postings_csv("Postings_01052019_02052019.csv")
   #write.csv(all_postings_original, file = "all_postings_original.csv")
   all_postings_original$PostingCreatedAt = as.Date(all_postings_original$PostingCreatedAt)
   all_postings1 <- subset(all_postings_original, PostingCreatedAt == as.Date("2019-05-01"))
@@ -105,15 +88,21 @@ if (!all_data){
   #all_votes 
   
 }
-
-nrow(all_postings_original)
-
 ```
+
+    ## [1] "Alles data.."
+    ## [1] "Postings_01052019_15052019.csv"
+    ## [1] "Postings_16052019_31052019.csv"
+
+``` r
+nrow(all_postings)
+```
+
+    ## [1] 255402
 
 ## Function to read votes files
 
-```{r, echo=TRUE,warning=FALSE,message=FALSE}
-
+``` r
 # --------------- read_in_votes_csv Function ----------------------
 
 read_in_votes_csv <- function (filename) {
@@ -139,15 +128,11 @@ read_in_votes_csv <- function (filename) {
   
 }
 # ------------------------ end Function--------------------------------
-
 ```
-
 
 ## Actually reading votes datasets
 
-```{r, echo=TRUE,warning=FALSE,message=TRUE}
-
-
+``` r
 if (!all_data){
   setwd("./data/Data files 01.05.2019-02.05.2019 (40,8 MB)-20191126")
   
@@ -167,8 +152,13 @@ if (!all_data){
   all_votes <- rbind (all_votes1,all_votes2)
   
 }
+```
 
+    ## [1] "Alles data.."
+    ## [1] "Votes_01052019_15052019.csv"
+    ## [1] "Votes_16052019_31052019.csv"
 
+``` r
 all_votes$VoteCreatedAt = as.Date(all_votes$VoteCreatedAt)
 
 
@@ -177,14 +167,13 @@ all_votes$VoteCreatedAt = as.Date(all_votes$VoteCreatedAt)
 
 #Number of votes
 nrow(all_votes)
-
 ```
+
+    ## [1] 1920997
 
 ## Select by Gender, Transform and merge datasets
 
-
-```{r, echo=TRUE,warning=FALSE,message=TRUE}
-
+``` r
 postings_M <<- subset(all_postings, Gender_Author == "m")
 postings_W <<- subset(all_postings, Gender_Author == "w")
 all_postings <- rbind(postings_M, postings_W)
@@ -208,16 +197,13 @@ colnames(gender_voters)[2] <- "Gender"
 gender_id <- rbind(gender_authors, gender_voters)
 #Create a subset of the data set taking the gender
 gender_id_male <- subset(gender_id, Gender =="m")
-
-
 ```
 
 # Task 2
 
 ## Creating the graph function based on the data
 
-```{r, echo=TRUE,warning=FALSE,message=FALSE}
-
+``` r
 csv_to_xml <- function (article_Channel, w = 1) {
   graph <<- graph[0,]
   filtered_joined <<- subset(joined_votes_postings, ArticleChannel == paste(article_Channel))
@@ -247,7 +233,7 @@ csv_to_xml <- function (article_Channel, w = 1) {
         w,
         sum_pos + sum_neg, #1
         abs(sum_pos - sum_neg), #2
-        sum_pos - sum_neg #3 # Generate negative values of weights and can be use for the experiment.
+        sum_pos - sum_neg #3
       )
       
       
@@ -265,11 +251,9 @@ csv_to_xml <- function (article_Channel, w = 1) {
 }
 ```
 
-
 ## Testing the function
 
-
-```{r, echo=TRUE,warning=FALSE,message=TRUE,fig.height = 6, fig.width = 8, fig.align='center'}
+``` r
 #Generate dataframe for edgelist (will be reused for every ArticelChannel)
 graph <- data.frame(matrix(ncol = 3, nrow = 0))
 colnames(graph) <- c("voter", "author", "weight")
@@ -283,31 +267,57 @@ categories <- unique(joined_votes_postings$ArticleChannel)
 c <- categories[8]
 
 csv_to_xml(c)
+```
 
+    ## ... 5000 edges added to graph.
+    ## ... 10000 edges added to graph.
+    ## ... 15000 edges added to graph.
+    ## ... 20000 edges added to graph.
+    ## ... 25000 edges added to graph.
+    ## ... 30000 edges added to graph.
+    ## Sucessfully created graph Web
+
+``` r
 # preliminary info
 
 is.bipartite(g)
-vcount(g)
-ecount(g)
+```
 
+    ## [1] FALSE
+
+``` r
+vcount(g)
+```
+
+    ## [1] 7986
+
+``` r
+ecount(g)
+```
+
+    ## [1] 30170
+
+``` r
 V(g)$type <- V(g)$name %in% gender_id_male$ID
 V(g)$color <- ifelse(V(g)$type, "lightblue", "salmon")
 V(g)$shape <- ifelse(V(g)$type, "circle", "square")
 plot(g, vertex.size=5, layout=layout_nicely, vertex.label=NA)
+```
 
+<img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-8-1.png" style="display: block; margin: auto;" />
 
+``` r
 # summary(g)
 # str(g)
 # cat(V(g)$type)
 # is.directed(g)
-
 ```
+
 # Task 3
 
 ## Comparation function betweeen all the algorithms
 
-
-```{r, echo=TRUE,warning=FALSE,message=TRUE,fig.height = 6, fig.width = 8, fig.align='center'}
+``` r
 ######## COMPARE ###########
 
 compare_alles_con_alles <- function (clusters_list, comp_cluster) {
@@ -366,19 +376,14 @@ compare_alles_con_alles <- function (clusters_list, comp_cluster) {
   }
   return(comp_cluster)
 }
-
 ```
 
+## Computing the algorithms for community detection
 
-## Computing the algorithms for community detection 
-
-```{r, echo=TRUE,warning=FALSE,message=FALSE,fig.height = 9, fig.width = 9, fig.align='center',results='hide',fig.keep='all'}
-
+``` r
 set.seed(9103)
 
-www <- 2
-
-setwd("./output/plots_small_dataset")
+setwd("./output/plots_large_dataset")
 
 i = 1
 
@@ -400,7 +405,7 @@ for (c in categories){
   #Time performance
   
   start_time <- Sys.time()
-  csv_to_xml(c, w = www)
+  csv_to_xml(c, w = 1)
   
   ud_g = as.undirected(g, mode = c("collapse"), edge.attr.comb=list(weight="sum", "ignore"))
   g <- ud_g
@@ -845,13 +850,13 @@ for (c in categories){
   comp_cluster <- compare_alles_con_alles(clusters_list,comp_cluster)
   
 }
-
 ```
+
+<img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-1.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-2.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-3.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-4.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-5.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-6.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-7.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-8.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-9.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-10.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-11.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-12.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-13.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-14.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-15.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-16.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-17.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-18.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-19.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-20.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-21.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-22.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-23.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-24.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-25.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-26.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-27.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-28.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-29.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-30.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-31.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-32.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-33.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-34.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-35.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-36.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-37.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-38.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-39.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-40.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-41.png" style="display: block; margin: auto;" /><img src="Community-Detection_large_dataset_files/figure-gfm/unnamed-chunk-10-42.png" style="display: block; margin: auto;" />
 
 ## Exporting the metrics into a csv file
 
-```{r, echo=TRUE,warning=FALSE,message=TRUE}
-
+``` r
 #### METRICS OF GRAPHS ####
 
   c_metrics <- matrix(v_clusters,ncol=11,byrow=TRUE)
@@ -859,11 +864,20 @@ for (c in categories){
   rownames(c_metrics) <- r_clusters
   c_metrics <- as.table(c_metrics)
   
-  setwd("./output/target_small_dataset")
+  setwd("./output/target_large_dataset")
   
-  write.csv(c_metrics, file=paste('clustering',"_ALL_metrics_22",'.csv', sep =''))
+  write.csv(c_metrics, file=paste('clustering',"_ALL_metrics_3",'.csv', sep =''))
   colnames(c_metrics)
-  
+```
+
+    ##  [1] "Channel"                    "Nodes"                     
+    ##  [3] "Edges"                      "Avg. degree"               
+    ##  [5] "Algorithm"                  "Time"                      
+    ##  [7] "Hierarchical"               "Communities"               
+    ##  [9] "Avg. Size Communities"      "Modularity"                
+    ## [11] "Modularity with Membership"
+
+``` r
 #### METRICS OF COMPARATIONS #####
 
   comp_metrics <- matrix(comp_cluster,ncol=5,byrow=TRUE)
@@ -874,18 +888,17 @@ for (c in categories){
   
   #setwd("./target")
   
-  write.csv(comp_metrics, file=paste('comparing',"_ALL_metrics_22",'.csv', sep =''))
+  write.csv(comp_metrics, file=paste('comparing',"_ALL_metrics_3",'.csv', sep =''))
   colnames(comp_metrics)
-
-
 ```
+
+    ## [1] "Channel"   "cmm1_algo" "cmm2_algo" "method"    "score"
 
 # Task 4
 
 ## Comparing metrics with different algorithms
 
-
-```{r, echo=TRUE,warning=FALSE,message=TRUE}
+``` r
 ######## COMPARE ###########
 
 compare_alles_con_alles <- function (clusters_list, comp_cluster) {
@@ -944,23 +957,20 @@ compare_alles_con_alles <- function (clusters_list, comp_cluster) {
   }
   return(comp_cluster)
 }
-
 ```
 
-
-```{r echo=TRUE, message=FALSE, warning=FALSE}
-
+``` r
 #5. Behaviour of the methods regarding the detected community sizes with different graph sizes.
 # how the detected communities zises change when we change the graph size.
 # run the algorithms on different graph sizes and use the results in tables.
-
 ```
 
 # Task 5
 
 ## Conclusions
 
-```{r, echo = TRUE}
+``` r
  print ('The conclusions are written in the report attached')
-
 ```
+
+    ## [1] "The conclusions are written in the report attached"
