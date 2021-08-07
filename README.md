@@ -1,5 +1,5 @@
 # SNA
-Empirical Analysis of Social Network Data with a focus on comparing six community detection algorithms:
+Empirical Analysis of Social Network Data with a focus on comparing six community detection algorithms based on data provided by the news website “derStandard.at”:
 * Fastgreedy
 * Label Propagation
 * Leading Eigenvector
