@@ -8,7 +8,7 @@ Empirical Analysis of Social Network Data with a focus on comparing six communit
 * Walktrap
 
 ## Results
-Here are some output based on small dataset. For more information, you can have a look at the report and [R Markdown document](Community-Detection_smal_dataset.md).
+Here are some output based on small dataset. For more information, you can have a look at the [report](https://www.overleaf.com/read/fgqqbqstwypq) and [R Markdown document](Community-Detection_smal_dataset.md).
 
 <table>
 <tr> <td>
