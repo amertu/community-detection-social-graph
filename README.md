@@ -1,4 +1,4 @@
-# SNA
+# Empirical Analysis of Social Network Data 
 Empirical study to compare the effectiveness of six community detection algorithms Fast greedy, Label Propagation, Leading Eigenvector, Infomap, Multilevel, and Walktrap on social network data from the Austrian news website [derStandard.at](https://www.derstandard.at/). The analysis focused on evaluating how each algorithm detects underlying user communities based on interaction patterns. Key evaluation criteria included modularity scores, computational efficiency, and the structural coherence of the resulting clusters. This comparison provided valuable insights into the strengths and limitations of each approach for real-world social network analysis and helped identify the most suitable algorithms for uncovering meaningful social structures in online discussion environments.
 
 ## Results
