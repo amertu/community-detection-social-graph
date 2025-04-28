@@ -11,7 +11,7 @@ This project focuses on uncovering social structures and user behavior patterns 
 Through the use of multiple community detection algorithms and efficient data processing pipelines, it enhances content targeting and engagement strategies.
 
 ## Architecture
-```
+```text
 +---------------------------+      +---------------------------+     +---------------------------+     +---------------------------+      +---------------------------+
 |  User Interaction Dataset | -->  |    Data Cleaning (dplyr)  | --> |  Graph Creation (igraph)  | --> |  Community Detection      | -->  |    Insights & Reports     |
 |                           |      |                           |     |                           |     | (6 Network Algorithms)    |      |                           |
