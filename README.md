@@ -10,7 +10,7 @@
 This project focuses on uncovering social structures and user behavior patterns within **derStandard.at** by applying advanced network analysis techniques.  
 Through the use of multiple community detection algorithms and efficient data processing pipelines, it enhances content targeting and engagement strategies.
 
-## Architecture Overview
+## Architecture
 ```
 +---------------------------+      +---------------------------+     +---------------------------+     +---------------------------+      +---------------------------+
 |  User Interaction Dataset | -->  |    Data Cleaning (dplyr)  | --> |  Graph Creation (igraph)  | --> |  Community Detection      | -->  |    Insights & Reports     |
