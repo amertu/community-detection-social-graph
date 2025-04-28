@@ -10,6 +10,13 @@
 This project focuses on uncovering social structures and user behavior patterns within **derStandard.at** by applying advanced network analysis techniques.  
 Through the use of multiple community detection algorithms and efficient data processing pipelines, it enhances content targeting and engagement strategies.
 
+## Key Contributions
+
+- **Led Community Detection Analysis**: Conducted in-depth analysis of user interactions to identify key communities and social trends.
+- **Applied Multiple Algorithms**: Utilized six different network analysis algorithms to detect and map user communities, uncovering important engagement and behavior patterns.
+- **Enhanced Insights**: Improved understanding of active user groups, supporting better content targeting and engagement strategies.
+- **Automated Data Pipelines**: Developed and automated data workflows using **R**, **igraph**, and **dplyr** to process large-scale datasets reliably and efficiently.
+
 ## Architecture
 ```text
 +---------------------------+      +---------------------------+     +---------------------------+     +---------------------------+      +---------------------------+
@@ -17,12 +24,6 @@ Through the use of multiple community detection algorithms and efficient data pr
 |                           |      |                           |     |                           |     | (6 Network Algorithms)    |      |                           |
 +---------------------------+      +---------------------------+     +---------------------------+     +---------------------------+      +---------------------------+
 ```
-## Key Contributions
-
-- **Led Community Detection Analysis**: Conducted in-depth analysis of user interactions to identify key communities and social trends.
-- **Applied Multiple Algorithms**: Utilized six different network analysis algorithms to detect and map user communities, uncovering important engagement and behavior patterns.
-- **Enhanced Insights**: Improved understanding of active user groups, supporting better content targeting and engagement strategies.
-- **Automated Data Pipelines**: Developed and automated data workflows using **R**, **igraph**, and **dplyr** to process large-scale datasets reliably and efficiently.
 
 ## Business Impact
 
