@@ -4,6 +4,7 @@
 ![RStudio IDE](https://img.shields.io/badge/RStudio-565656?logo=rstudioide&logoColor=white)
 ![Rdplyr](https://img.shields.io/badge/dplyr-%E2%9C%94-blue?logo=librariesdotio&logoColor=white)
 ![igraph](https://img.shields.io/badge/igraph-%E2%9C%94-blue?logo=librariesdotio&logoColor=white)
+![Git](https://img.shields.io/badge/Git-2.49.0-f05133?logo=git&logoColor=white)
 
 ## Project Overview
 
