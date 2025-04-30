@@ -18,7 +18,7 @@ Through the use of multiple community detection algorithms and efficient data pr
 - **Automated Data Pipelines**: Developed and automated data workflows using **R**, **igraph**, and **dplyr** to process large-scale datasets reliably and efficiently.
 
 ## Architecture
-```text
+```markdown
 +---------------------------+      +---------------------------+     +---------------------------+     +---------------------------+      +---------------------------+
 |  User Interaction Dataset | -->  |    Data Cleaning (dplyr)  | --> |  Graph Creation (igraph)  | --> |  Community Detection      | -->  |    Insights & Reports     |
 |                           |      |                           |     |                           |     | (6 Network Algorithms)    |      |                           |
