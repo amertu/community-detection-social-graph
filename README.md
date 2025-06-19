@@ -26,11 +26,6 @@ Through the use of multiple community detection algorithms and efficient data pr
 +---------------------------+      +---------------------------+     +---------------------------+     +---------------------------+      +---------------------------+
 ```
 
-## Business Impact
-
-- **Optimized Content Strategy**: Provided deeper insights into active user communities, enabling more targeted and engaging content.
-- **Supported Data-Driven Decision Making**: Empowered marketing and content teams with actionable intelligence to optimize user engagement.
-
 ## Results
 * Here are some output plots based on small dataset, that show detected communities using the menttioned algorithms. For more information, you can have a look at the [report](https://www.overleaf.com/read/fgqqbqstwypq) and [R Markdown document](doc/Community-Detection_smal_dataset.md).
 
