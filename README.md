@@ -49,3 +49,11 @@ Through the use of multiple community detection algorithms and efficient data pr
 
 
 <img src="fig/results_100-500.png" alt="Binary "> 
+
+
+
+
+
+## Project Report
+
+[The full report is available via Overleaf](https://www.overleaf.com/read/tvvygnwwdnth#6ab176)
